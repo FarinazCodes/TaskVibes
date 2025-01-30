@@ -7,7 +7,9 @@ import TaskForm from "./components/TaskForm/TaskForm";
 import TaskList from "./components/TaskList/TaskList";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
 const API_URL = import.meta.env.VITE_APP_URL;
+
 function App() {
   const [quote, setQuote] = useState("");
 
@@ -22,36 +24,47 @@ function App() {
       });
   }, []);
 
-  const [taskList, setTaskList] = useState([
-    { id: uid(), goal: "Choosing a hackathon project", isCompleted: true },
-    {
-      id: uid(),
-      goal: "setting up a client-server architecture",
-      isCompleted: true,
-    },
-    {
-      id: uid(),
-      goal: "Installing necessary packages like NPM",
-      isCompleted: true,
-    },
+  const [taskList, setTaskList] = useState(() => {
+    const storedTasks = localStorage.getItem("taskList");
+    return storedTasks
+      ? JSON.parse(storedTasks)
+      : [
+          {
+            id: uid(),
+            goal: "Choosing a hackathon project",
+            isCompleted: true,
+          },
+          {
+            id: uid(),
+            goal: "Setting up a client-server architecture",
+            isCompleted: true,
+          },
+          {
+            id: uid(),
+            goal: "Installing necessary packages like NPM",
+            isCompleted: true,
+          },
+          { id: uid(), goal: "Struggle", isCompleted: true },
+        ];
+  });
 
-    {
-      id: uid(),
-      goal: "Struggle",
-      isCompleted: true,
-    },
-  ]);
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
 
-  const handleTaskAdd = (taskData) => {
-    setTaskList([...taskList, { id: uid(), goal: taskData }]);
+  const handleTaskAdd = (taskGoal) => {
+    setTaskList([
+      ...taskList,
+      { id: uid(), goal: taskGoal, isCompleted: false },
+    ]);
   };
 
   const handleTaskToggle = (task) => {
-    const updatedTaskList = taskList.map((taskVal) => {
-      return taskVal.id === task.id
+    const updatedTaskList = taskList.map((taskVal) =>
+      taskVal.id === task.id
         ? { ...taskVal, isCompleted: !taskVal.isCompleted }
-        : taskVal;
-    });
+        : taskVal
+    );
 
     setTaskList(updatedTaskList);
   };
