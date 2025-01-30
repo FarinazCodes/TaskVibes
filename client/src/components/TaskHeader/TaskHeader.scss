@@ -1,0 +1,27 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+  &__content {
+  }
+  object-fit: contain;
+  &__title {
+    font-family: "Georgia", serif;
+    font-size: 24px;
+    margin: 0;
+  }
+  &__time,
+  &__date {
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+  }
+}

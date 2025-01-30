@@ -1,0 +1,21 @@
+.task {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  color: black;
+  cursor: pointer;
+  &::before {
+    position: absolute;
+    left: 20rem;
+    content: "🌿";
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+  &--completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+    &::before {
+      content: "🍵";
+    }
+  }
+}

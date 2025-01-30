@@ -1,0 +1,30 @@
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px auto;
+  border: 2px solid darkslategrey;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 4px 0 8px rgba(0, 0, 0, 0.2);
+  &__content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    font-family: "Georgia", serif;
+    font-size: 24px;
+    margin: 0;
+  }
+  &__time,
+  &__date {
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+  }
+}
+
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 4px 0 8px rgba(0, 0, 0, 0.2);

@@ -1,0 +1,38 @@
+@use "typography";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  background-color: #d0c3f1;
+}
+
+main {
+  background-color: #d0c3f1;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.task-app {
+  padding: 20px;
+  border: 1px solid #b2dfdb;
+  border-radius: 6px;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  background-color: #ffffff;
+}
+
+main {
+  background-color: whitesmoke;
+}
